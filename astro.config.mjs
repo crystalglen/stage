@@ -7,9 +7,6 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: 'https://crystalglen.github.io',
   base: '/stage',
-  redirects: {
-    "Ourguys" : "dogs"
-  },
 
   vite: {
     plugins: [tailwindcss()]
