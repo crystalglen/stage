@@ -5,8 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://crystalglen.github.io',
-  base: '/stage',
+  site: 'https://crystalglen.netlify.app',
 
   vite: {
     plugins: [tailwindcss()]
