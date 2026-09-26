@@ -1,0 +1,15 @@
+---
+---
+<div class="border-secondary border-l-2 relative bg-white/40 flex items-center max-md:flex-col">
+	<figure class="basis-3/5 p-6">
+		<blockquote class="italic text-xl">
+			<p>
+				{Astro.props.quote}
+			</p>
+			</blockquote>
+		<figcaption class="font-semibold text-secondary mt-6">
+      — {Astro.props.attribution}
+    </figcaption>
+  </figure>
+	<img class="basis-2/5 m-6 block border-2 border-secondary" src={Astro.props.src} role="presentation"/>
+</div>

@@ -1,0 +1,45 @@
+---
+import Page from '@components/page.astro';
+import Image from '@components/image.astro';
+import { getCollection, render } from 'astro:content';
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const posts = await getCollection('dogs');
+  return posts.map(post => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+// 2. For your template, you can get the entry directly from the prop
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+---
+<Page title={post.data.title}>
+  <section class="grid gap-6 grid-cols-1 md:grid-cols-2">
+    <div class="mb-0 md:mb-10">
+      <h1 class="h1 mb-8">{post.data.title}</h1>
+      <ul class="bg-primary/20 p-4 flex flex-col gap-4">
+        <li> <strong> Sex</strong>: {post.data.sex === 'f' ? 'Female' : 'Male'} </li>
+        <li> <strong> Date of Birth</strong>: {new Date(post.data.dob).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) } </li>
+        <li> <strong> Registered Name</strong>: {post.data.show_name} </li>
+      </ul>
+    </div>
+    <div>
+      <img src={post.data.img_path} alt={post.data.title} />
+    </div>
+  </section>
+  <section class="mt-10 container-2xl">
+    <Content />
+  </section>
+  <section class="mt-10">
+    <h2 class="h2 text-center"> Gallery </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center">
+    { post.data.gallery.map((item) => (
+      <Image src={item.src} caption={item.name} aspectRatio="aspect-video" />
+    )) }
+    </div>
+  </section>
+</Page>

@@ -1,0 +1,16 @@
+---
+const hasCaption = Astro.props.caption !== undefined;
+const hasAlt = Astro.props.alt !== undefined;
+const aspectRatio = Astro.props.aspectRatio || '';
+const Element = hasCaption ? 'figure' : 'div';
+---
+<Element class:list={[Astro.props.class, "image"]}>
+  <img
+    class:list={[aspectRatio, "w-full h-auto object-cover"]}
+    src={encodeURI(Astro.props.src)}
+    alt={Astro.props.alt}
+    role={hasAlt ? null : 'presentation'}
+    loading={Astro.props.eager === true ? 'eager' : 'lazy'}
+  />
+  { hasCaption && <figcaption set:html={Astro.props.caption} class="text-sm text-center italic py-2"/> }
+</Element>

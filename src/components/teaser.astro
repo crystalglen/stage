@@ -1,0 +1,14 @@
+---
+import Image from '@components/image.astro';
+
+---
+<div class="relative">
+  <div class="relative">
+    <Image src={Astro.props.src} aspectRatio='aspect-4/3' />
+  </div>
+  <h3 class="h3">
+    <a class="after:absolute after:inset-0 hover:underline" href={Astro.props.link}>
+      { Astro.props.title }
+    </a>
+  </h3>
+</div>

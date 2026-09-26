@@ -1,0 +1,43 @@
+---
+import Page from '@components/page.astro';
+import Image from '@components/image.astro';
+import Teaser from '@components/teaser.astro';
+
+---
+
+<Page title="Homepage">
+	<div class="grid grid-cols-1 gap-4">
+		<div class="mb-6">
+			<h1 class="h1 text-center"> Classic Golden Retrievers<br>in Northern Colorado </h1>
+			<p class="text-center md:container-2xl"> Our passion is Golden Retrievers.  Since 1976 our vision has been to forge a unique blend of the finest bloodlines old and new creating top quality Golden Retrievers. These exceptionally bred Goldens fit the bill in all walks of life. A life long companion that can win in the show ring, performance ring, and also be the perfect family pet.  We put our experience and integrity into every Golden Retriever we produce. </p>
+			<div class="flex justify-center gap-4 mt-4">
+				<a href="/about" class="btn-primary"> Our History</a>
+				<a href="/contact" class="btn-secondary"> Get in Touch </a>
+			</div>
+		</div>
+		<Image src="/images/louie.jpg" alt="Louie" aspectRatio="aspect-video" caption="Louie" eager={true} />
+	</div>
+
+  <div class="mt-10 mb-10 grid grid-cols-1 md:grid-cols-2 items-center">
+		<div class="max-md:mb-10">
+			<h2 class="h2"> Upcoming Litters </h2>
+			<p class="mb-4"> Next litter is planned for end of 2026 </p>
+			<div class="flex flex-wrap gap-4">
+				<a href="/puppies/litters" class="btn-primary"> Learn more </a>
+			</div>
+		</div>
+		<Image aspectRatio="aspect-square" src="/images/puppies.jpeg" />
+	</div>
+
+
+		<div class="flex justify-between items-center gap-4">
+		  <h2 class="h2 text-center"> Our Dogs </h2>
+			<a href="/dogs" class="btn-secondary"> See all </a>
+		</div>
+		<div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+			<Teaser src='/images/savvy-1.jpg' title='Savvy' link='/dogs/savvy' />
+			<Teaser src='/images/savvy-1.jpg' title='Moxi' link='/dogs/savvy' />
+			<Teaser src='/images/savvy-1.jpg' title='Pocket' link='/dogs/savvy' />
+		</div>
+
+</Page>

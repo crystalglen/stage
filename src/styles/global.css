@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --color-yellow: #edf7f6;
+  --color-orange: #432534;
+  --color-primary: #2660a4;
+  --color-secondary: #432534;
+  --color-accent: #f95738;
+  /* Buttons */
+  /* Primary */
+  --btn-border-primary: var(--color-primary);
+  --btn-color-primary: var(--color-primary);
+  --btn-hover-color-primary: #1c4a80;
+  --btn-text-primary: white;
+  /* Outlined */
+  --btn-border-secondary: var(--color-primary);
+  --btn-color-secondary: transparent;
+  --btn-hover-color-secondary: white;
+  --btn-text-secondary: var(--color-primary);
+  /* Icons */
+  --icon-caret: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%229%22%20height%3D%225%22%20viewBox%3D%220%200%209%205%22%20fill%3D%22none%22%3E%3Cg%20clip-path%3D%22url(%23a)%22%3E%3Cpath%20d%3D%22M1.18.536%204.394%203.75%207.608.536%22%20stroke%3D%22%23121212%22%20stroke-width%3D%221.071%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fg%3E%3Cdefs%3E%3CclipPath%20id%3D%22a%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M0%200h9v4.5H0z%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3C%2Fsvg%3E');
+  --icon-bars: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgdmlld0JveD0iMCAwIDI0IDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTIxIDE3YTEgMSAwIDAgMSAwIDJIM2ExIDEgMCAwIDEgMC0yem0wLTZhMSAxIDAgMCAxIDAgMkgzYTEgMSAwIDAgMSAwLTJ6bTAtNmExIDEgMCAwIDEgMCAySDNhMSAxIDAgMSAxIDAtMnoiLz48L3N2Zz4=');
+  --icon-close: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLUxpY2Vuc2U6IE1JVC4gTWFkZSBieSBtaWNoYWVsYW1wcjogaHR0cHM6Ly9naXRodWIuY29tL21pY2hhZWxhbXByL2phbS0tPgo8c3ZnIGZpbGw9IiMwMDAwMDAiIHdpZHRoPSI4MDBweCIgaGVpZ2h0PSI4MDBweCIgdmlld0JveD0iLTYgLTYgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pbllNaW4iIGNsYXNzPSJqYW0gamFtLWNsb3NlIj4KICA8cGF0aCBkPSJNNy4zMTQgNS45bDMuNTM1LTMuNTM2QTEgMSAwIDEgMCA5LjQzNS45NUw1Ljg5OSA0LjQ4NSAyLjM2NC45NUExIDEgMCAxIDAgLjk1IDIuMzY0bDMuNTM1IDMuNTM1TC45NSA5LjQzNWExIDEgMCAxIDAgMS40MTQgMS40MTRsMy41MzUtMy41MzUgMy41MzYgMy41MzVhMSAxIDAgMSAwIDEuNDE0LTEuNDE0TDcuMzE0IDUuODk5eiIvPgo8L3N2Zz4K');
+  --icon-size-sm: 16px;
+  /* Fonts */
+  --font-display: 'Black Chancery', serif;
+}
+
+/* Font */
+@font-face {
+  font-family: 'Black Chancery';
+  font-display: swap;
+  src: url('/fonts/black_chancery/BLKCHCRY.TTF');
+}
+
+@utility h1 {
+  @apply font-semibold font-display text-4xl md:text-5xl text-primary mb-6;
+  @apply leading-[1.2];
+}
+@utility h2 {
+  @apply font-semibold text-2xl md:text-3xl text-primary mb-4;
+}
+@utility h3 {
+  @apply font-semibold text-xl md:text-2xl text-primary mb-4;
+}
+
+@utility icon-* {
+  mask-image: --value(--icon);
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  flex-shrink: 0;
+  width: --modifier(--icon-size-*, [length]);
+  height: --modifier(--icon-size-*, [length]);
+  --icon: --value(--icon);
+}
+
+@utility btn-* {
+  background-color: --value(--btn-color-*);
+  border-color: --value(--btn-border-*);
+  color: --value(--btn-text-*);
+  @apply border-2;
+  @apply rounded-xl;
+  @apply inline-block;
+  @apply py-2;
+  @apply px-3;
+  @apply transition;
+  @apply font-normal;
+  @variant hover {
+    text-decoration: none;
+    background-color: --value(--btn-hover-color-*);
+  }
+}
+
+@utility container-* {
+  @apply mx-auto px-4;
+  max-width: --value(--container-*, [length]);
+}
+
+@layer base {
+  body {
+    @apply bg-yellow;
+    font-size: 18px;
+    font-family: 'Helvetica', sans-serif;
+    @variant max-md {
+      font-size: 1rem;
+    }
+  }
+
+  p + p {
+    @apply mt-6;
+  }
+
+  a {
+    @apply hover:underline;
+    @apply font-semibold;
+    @apply text-orange;
+  }
+}

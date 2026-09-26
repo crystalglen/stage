@@ -1,0 +1,53 @@
+---
+import Page from '../components/page.astro';
+import 'glightbox/dist/css/glightbox.min.css';
+
+const galleryMedia = [
+	{
+		href: 'https://placehold.co/700x500',
+		type: 'image',
+		title: 'my image',
+		description: 'Optional caption below',
+		thumbnail: 'https://placehold.co/600x400',
+	},
+	{
+		href: 'https://placehold.co/700x500',
+		type: 'image',
+		title: 'my image',
+		description: 'Optional caption below',
+		thumbnail: 'https://placehold.co/600x400',
+	},
+	{
+		href: 'https://placehold.co/700x500',
+		type: 'image',
+		title: 'my image',
+		description: 'Optional caption below',
+		thumbnail: 'https://placehold.co/600x400',
+	},
+];
+
+---
+<script>
+	import GLightbox from 'glightbox';
+	document.addEventListener('astro:page-load', () => {
+		GLightbox({
+			autoplayVideos: false,
+		});
+	});
+</script>
+
+<Page title="Gallery" description="View photos of our dogs">
+	<h1 class="h1 text-center"> Remembering the Good Times </h1>
+	<p class="text-center my-6"> Click on each photo to expand them </p>
+	<div>
+		<ul class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+			{ galleryMedia.map(({ thumbnail, href, type, description }) => (
+				<li>
+					<a href={href} class="cursor-zoom-in glightbox" data-type={type} data-description={description} data-gallery="gallery">
+						<img src={thumbnail} loading="lazy" alt="image" />
+					</a>
+				</li>
+			))}
+		</ul>
+	</div>
+</Page>

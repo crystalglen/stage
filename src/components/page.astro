@@ -1,0 +1,31 @@
+---
+import { ClientRouter } from "astro:transitions";
+import Header from './header.astro';
+import Footer from './footer.astro';
+import CTA from '@components/cta.astro';
+import '../styles/global.css';
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={Astro.props.description} />
+		<title>{Astro.props.title} | Crystal Glen Golden Retrievers </title>
+		<link rel="preload" href="/fonts/black_chancery/BLKCHCRY.TTF" as="font" type="font/ttf">
+	</head>
+	<body>
+		<Header/>
+    <main>
+      <div class="container-4xl py-10">
+      	<slot/>
+			</div>
+			<div class="mt-10">
+				<CTA heading={Astro.props.ctaHeading || 'The right pup is worth the wait.<br/>Join our waitlist today.'} />
+			</div>
+    </main>
+    <Footer/>
+	</body>
+</html>
+<ClientRouter />

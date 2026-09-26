@@ -1,0 +1,25 @@
+---
+// Component Script (JavaScript)
+const date = new Date().getFullYear();
+---
+<div class="bg-primary/20">
+  <div class="relative container-4xl h-[100px] md:h-[50px] ">
+  <img class="h-[100px] absolute -bottom-[9px] right-4" src="/images/golden-silhouette.svg" role="presentation"/>
+  </div>
+</div>
+<footer class="bg-primary py-8 text-white relative">
+  <div class="container-4xl py-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 justify-center items-center">
+      <img src="/images/Grca.jpg" alt="Member of the GRCA" loading="lazy" />
+      <img loading="lazy" src="/images/milehigrc.png" alt="Member of the Mile Hi Golden Retriever Club"/>
+      <img loading="lazy" src="/images/AKC_BOM_logo-2.png" alt="AKC breeder of Merit"/>
+      <img loading="lazy" src="/images/american-kennel-club judge.png" alt="AKC Judge"/>
+    </div>
+    <nav class="mt-8" aria-label="Social media links">
+      <ul class="flex justify-center">
+        <li> <a class="text-white" target="_blank" href="https://www.facebook.com/p/Crystal-Glen-Golden-Retrievers-61552281983801/"> Follow us on Facebook </a> </li>
+      </ul>
+    </nav>
+    <p class="text-center text-sm mt-6"> Crystal Glen { date } - all rights reserved </p>
+  </div>
+</footer>

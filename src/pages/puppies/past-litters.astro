@@ -1,0 +1,58 @@
+---
+import Page from '@components/page.astro';
+
+---
+<style>
+	@reference '@styles/global.css';
+	h2 {
+		@apply border-l-2 border-primary pl-4;
+	}
+	.tl-items {
+		@apply ml-10 mt-10;
+	}
+	.tl-items > div {
+		@apply border-b-1 border-gray-400;
+		@apply pb-4 mb-4;
+	}
+	.tl-items > div:last-child {
+		@apply border-transparent;
+	}
+</style>
+
+<Page title="Past litters" description="See past Crystal Glen litters.">
+	<h1 class="h1 text-center"> Looking back at our<br/>Golden Retriever babies! </h1>
+
+	<h2 class="h2"> 2023 </h2>
+	<div class="tl-items">
+		<div>
+			<h3 class="h3"> Emmet x Zuzu </h3>
+			<p> Blup and Finn </p>
+		</div>
+	</div>
+
+	<h2 class="h2"> 2022 </h2>
+	<div class="tl-items">
+		<div>
+			<h3 class="h3"> Ford x Sherbie </h3>
+			<p> 3 beautiful Golden Retriever babies - including our Moxi! </p>
+		</div>
+	</div>
+
+	<h2 class="h2"> 2021 </h2>
+	  <div class="tl-items">
+			<div>
+				<h3 class="h3">Emmett x Sherbie</h3>
+				<p>	A spectacular litter of 7 babies - including our Pocket - a new Champion by 2 and a huge win at Golden Retreiver National 2023 - Reserve Winners. And Lewis co-owned with Gloria Miller he needs just one point to finish his Championship. </p>
+			</div>
+			<div>
+				<h3 class="h3">Cody x Zuzu</h3>
+
+				Zuzu tooks us back to our Golden Age - and was bred to our grand old man from the early '90's - Cody! She had 4 beautiful babies of which we have "kept" 2. We co-own both these babies - Twist with Chritine Robinson and Tully with are old friend Jane Marino.
+			</div>
+			<div>
+				<h3 class="h3">Mclain x Rhea </h3>
+
+				This breeding was just out of this world. There where 4 boys and 2 girls. One of those beauties is our Super Starr! She has been an amazing addition to the Crystal Glen Family
+			</div>
+		</div>
+</Page>

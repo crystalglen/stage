@@ -1,0 +1,36 @@
+---
+import Page from '@components/page.astro';
+import Teaser from '@components/teaser.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('dogs');
+const sortedPosts = posts.toSorted((a, b) => {
+	// Filter by birthday. Oldest to Youngest.
+ return new Date(b.data.dob).getTime() - new Date(a.data.dob).getTime()
+});
+
+---
+
+<Page title="Our Dogs">
+	<h1 class="h1 text-center"> Meet our Goldens </h1>
+	<h2 class="h2"> Our Girls </h2>
+	<div class="grid gap-6 grid-cols-1 lg:grid-cols-2">
+		{
+			sortedPosts.filter(p => p.data.sex === 'f').map(p => (
+				<Teaser link={`/dogs/${p.id}`} src={'/images/savvy-1.jpg'} title={p.data.title} />
+			))
+		}
+	</div>
+	<h2 class="h2 mt-20"> Our Guys </h2>
+	<div class="grid gap-6 grid-cols-1 lg:grid-cols-2">
+		{
+			sortedPosts.filter(p => p.data.sex === 'm').map(p => (
+				<Teaser link={`/dogs/${p.id}`} src={'/images/savvy-1.jpg'} title={p.data.title} />
+			))
+		}
+	</div>
+	<h2 class="h2 mt-20"> Past Dogs </h2>
+	<ul class="list-disc list-inside">
+		<li> Aria (20xx - 2025)</li>
+	</ul>
+</Page>

@@ -1,0 +1,69 @@
+---
+import Page from '@components/page.astro';
+import Image from '@components/image.astro';
+
+const coOwns = [
+	{
+		src: '/images/Decker hd.jpg',
+		caption: 'Decker and Erin: Anne Shannon & Erik Foster'
+	},
+	{
+		src: '/images/Bristol hd2 .jpg',
+		caption: 'Bristol and Symee: Deb Lewis'
+	},
+	{
+		src: '/images/Tito 2023.jpg',
+		caption: 'Tito: co-owner SuAn Schreuder'
+	},
+	{
+		src: '/images/Rhea Hd small2.jpg',
+		caption: 'Rhea and Eva: Brittany Pocotte'
+	},
+	{
+		src: '/images/Bryce hd 3.jpg',
+		caption: 'Bryce: Kim Crawford'
+	},
+	{
+		src: '/images/Billee2.jpg',
+		caption: 'Billee: Micki McMillian'
+	},
+	{
+		src: '/images/Twist web.jpg',
+		caption: 'Twist: Chris Robinson'
+	},
+	{
+		src: '/images/Tully hd.jpg',
+		caption: 'Tully : Jane Marino'
+	},
+	{
+		src: '/images/Zuny hd.jpg',
+		caption: 'Zuni: Dottie Fucetola'
+	},
+	{
+		src: '/images/24091 (1).jpeg',
+		caption: 'Savvy: Hayley Stevens'
+	},
+];
+
+
+---
+<Page title="Partners" description="Become a Crystal Glen partner. Co own a dog from our breeding program">
+	<h1 class="h1 text-center"> Goldens In Partnership </h1>
+	<p> 
+
+We don't do this alone!
+
+With the help of some very wonderful people we are able to maintain our high standard of breeding. Joining into a partnership with Crystal Glen is mutually beneficial. New owners get the pick of the litter pup that is theirs to keep and cherish, and we have the opportunity to be able to breed that pup in the future.
+</p><p>
+These partnerships with Crystal Glen enable us to keep our viable breeding program alive, allowing us to produce the very best Golden Retrievers.
+  </p>
+	<a class="btn-primary my-10" href="/contact"> Interested in joining our family?</a>
+	<Image src="/images/Tito Ad Thingy 2 web.jpg" alt="Tito" caption="Am CH Crystal Glen Life of the Party BN RA" eager={true} />
+	<ul class="mt-10 grid gap-4 grid-cols-2">
+		{ coOwns.map(({src, caption}) => (
+			<li>
+				<Image src={src} caption={caption} />
+			</li>
+		))}
+	</ul>
+</Page>

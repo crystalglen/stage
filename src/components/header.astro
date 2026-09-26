@@ -1,0 +1,234 @@
+---
+// Component Script (JavaScript)
+const menuLinks = [
+  {
+    title: 'About',
+    attributes: {
+      href: "#",
+      class: "menu-trigger",
+      'aria-controls': "about"
+    },
+    children: [
+      { title: 'Our History', link: '/about'},
+      { title: 'Philosophy', link: '/about/philosophy'},
+      { title: 'Partner Program', link: '/about/partners'},
+    ],
+  },
+  {
+    title: 'Our Dogs',
+    attributes: {
+      href: "/dogs",
+      class: "menu-trigger",
+    },
+    children: [],
+  },
+  {
+    title: 'Puppies',
+    attributes: {
+      class: "menu-trigger",
+      href: "#",
+      "aria-controls": "puppies",
+    },
+    children: [
+      { title: 'Breeding Program', link: '/puppies'},
+      { title: 'Upcoming Litters', link: '/puppies/litters'},
+      { title: 'Past Litters', link: '/puppies/past-litters'},
+      { title: 'Pup Training', link: '/puppies/training'},
+      { title: 'New Owners', link: '/puppies/new-owners'},
+    ],
+  },
+  {
+    title: 'Gallery',
+    attributes: {
+      href: '/gallery',
+      class: "",
+    },
+    children: [],
+  },
+  {
+    title: 'Adults For Adoption',
+    attributes: {
+      href: "/adults-for-adoption",
+      class: "",
+    },
+    children: [],
+  },
+  {
+    title: 'Contact',
+    attributes: {
+      href: "/contact",
+      class: "",
+    },
+    children: [],
+  },
+];
+
+const topLevelMenuItemClasses = 'md:py-4 flex items-center gap-2 text-white font-normal';
+---
+<script>
+function MainMenu() {
+  const MENU_BREAKPOINT = 768;
+  const links = document.querySelectorAll('.menu > li > button');
+  function openDropdown(this:HTMLButtonElement, evt: Event) {
+    const { type } = evt;
+    if (window.innerWidth <= MENU_BREAKPOINT) {
+      if (type !== 'click') {
+        return;
+      }
+      if (this.getAttribute('aria-expanded') === 'true') {
+        closeDropdown.call(this, { relatedTarget: null, type: 'click' } as MouseEvent);
+        return;
+      }
+    }
+    this.setAttribute('aria-expanded', 'true');
+    this.firstElementChild.innerHTML = "<span class='sr-only'>Collapse menu </span>";
+  }
+  function closeDropdown(this:HTMLButtonElement, evt: MouseEvent|FocusEvent|KeyboardEvent) {
+    const { relatedTarget, type } = evt;
+    if (window.innerWidth <= MENU_BREAKPOINT && type !== 'click') {
+      return;
+    }
+    if (relatedTarget == this.nextElementSibling || this.nextElementSibling.contains(relatedTarget)) {
+      return;
+    }
+    this.setAttribute('aria-expanded', 'false');
+    this.firstElementChild.innerHTML = "<span class='sr-only'>Expand menu </span>";
+  }
+  links.forEach((button: Element) => {
+    const { nextElementSibling } = button;
+    if (nextElementSibling && nextElementSibling.classList.contains('dropdown')) {
+      button.addEventListener('mouseover', openDropdown);
+      button.addEventListener('mouseleave', closeDropdown);
+      button.addEventListener('click', openDropdown);
+      nextElementSibling.addEventListener('mouseleave', closeDropdown.bind(button));
+      // Keyboard Events.
+      button.addEventListener('keydown', (evt: KeyboardEvent) => {
+        switch(evt.code) {
+          case 'Space':
+          case 'ArrowDown':
+            evt.preventDefault();
+            evt.stopPropagation();
+            if (button.getAttribute('aria-expanded') === 'false') {
+              openDropdown.call(button as HTMLButtonElement, evt);
+            } else {
+              closeDropdown.call(button as HTMLButtonElement, { relatedTarget: null, type: 'keydown'} as unknown as KeyboardEvent);
+            }
+            break;
+          default:
+            break;
+        }
+      });
+      button.addEventListener('blur', closeDropdown);
+      // Close Dropdpwn when focus leaves first/last link in dropdown.
+      const dropdownLinks = nextElementSibling.querySelectorAll('a');
+      const firstLink = dropdownLinks[0];
+      firstLink.addEventListener('blur', (evt) => closeDropdown.call(button, evt));
+      if (dropdownLinks.length > 1) {
+        const lastLink = dropdownLinks[dropdownLinks.length - 1];
+        lastLink.addEventListener('blur', (evt) => closeDropdown.call(button, evt));
+      }
+    }
+  });
+
+  // Mobile menu.
+  const mobileTrigger = document.getElementById('mobile-menu-trigger');
+  mobileTrigger?.addEventListener('click', () => {
+    const mobileMenuId = mobileTrigger.getAttribute('aria-controls') || '';
+    const mobileMenu = document.getElementById(mobileMenuId);
+    const expanded = mobileTrigger.getAttribute('aria-expanded');
+    if (expanded === 'true') {
+      mobileTrigger.setAttribute('aria-expanded', 'false');
+      mobileMenu?.classList.remove('active');
+    } else {
+      mobileTrigger.setAttribute('aria-expanded', 'true');
+      mobileMenu?.classList.add('active');
+    }
+  });
+}
+document.addEventListener('astro:page-load', MainMenu);
+</script>
+
+<style>
+  @reference '@styles/global.css';
+  header {
+    background-image: linear-gradient(to bottom, var(--color-primary), var(--color-yellow));
+  }
+  .dropdown {
+    display: none;
+  }
+  .menu-trigger[aria-expanded="true"] + .dropdown {
+    @apply block md:absolute;
+    z-index: 1;
+    background-color: var(--color-primary);
+    padding: 1rem;
+  }
+  #mobile-menu-trigger {
+    @apply flex items-center justify-center;
+    @apply after:flex;
+    @apply after:bg-black;
+    @apply after:icon-bars/sm; 
+  }
+  #mobile-menu-trigger[aria-expanded="true"] {
+    @apply after:icon-close/[24px];
+  }
+  /* Mobile */
+  @variant max-md {
+    nav {
+      @apply fixed top-0 w-full;
+      @apply z-5;
+      @apply hidden;
+    }
+    nav.active {
+      @apply block;
+      @apply p-4;
+    }
+  }
+</style>
+
+<header class="py-4">
+  <a href="/" title="Crystal Glen Golden Retrievers">
+    <img class="mx-auto md:h-[200px] px-4" src="/images/logo-wordmark.svg" fetchpriority="high" loading="eager" alt="Crystal Glen Golden Retrievers. Where magic happens." />
+  </a>
+  <button id="mobile-menu-trigger" aria-expanded="false" aria-controls="main-menu" class="block fixed size-10 border-2 border-primary top-4 right-4 bg-white z-10 rounded-full md:!hidden">
+    <span class="sr-only"> Open Menu </span>
+  </button>
+  <nav id="main-menu" aria-label="Crystal Glen site links" class="bg-primary py-2 md:my-8">
+    <ul class="menu flex flex-col gap-6 justify-center text-white md:flex-row">
+      <li class="my-4 md:hidden">
+        <a class="text-2xl text-white font-display hover:no-underline" href="/"> Crystal Glen<br>Golden Retrievers </a>
+      </li>
+      {
+        menuLinks.map(({ title, attributes, children }) => (
+          <li>
+            {/* Render button if dropdown */}
+            { children.length > 0 &&
+              <button
+                class:list={[attributes.class, topLevelMenuItemClasses]}
+                aria-expanded="false"
+                aria-controls={attributes['aria-controls']}
+              > 
+              { title }
+              <span class="after:flex after:icon-caret/sm after:bg-white">
+                <span class="sr-only"> Expand menu </span>
+              </span>
+            </button>
+            }
+            {/* Render link if no children. */}
+            { children.length === 0 && <a href={attributes.href} class:list={[attributes.class, topLevelMenuItemClasses]}> {title} </a>}
+            {/* Dropdown for child links */}
+            { children.length > 0 &&
+              <div class="dropdown" id={attributes['aria-controls']} aria-label={title}>
+                <ul class="flex flex-col gap-4">
+                { children.map((child) => (
+                    <li><a class="text-white font-normal" href={child.link}> { child.title }</a></li>
+                  ))
+                }
+                </ul>
+              </div>
+            }
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

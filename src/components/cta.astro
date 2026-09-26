@@ -1,0 +1,19 @@
+---
+---
+<style>
+  .cta {
+    background-image: linear-gradient(to bottom, var(--color-yellow), var(--color-primary) 90%);
+  }
+</style>
+<div class="bg-primary/20 py-12">
+  <div class="container-3xl">
+    <h2 class="h2 text-center" set:html={Astro.props.heading} />
+    <p class="my-6 text-center">
+      Please read about <a href="/about/philosophy">our philosophy</a> to get a true understanding of our breeding program.
+      Puppy Training is a must. If you need help, we have <a href="/puppies/training">board and train options</a> available too!
+    </p>
+    <div class="flex justify-center items-center w-full">
+      <a href="/contact" class="btn-primary"> Get on the Waitlist </a>
+    </div>
+  </div>
+</div>
