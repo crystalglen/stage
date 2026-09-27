@@ -2,6 +2,16 @@
 import Page from '@components/page.astro';
 import Image from '@components/image.astro';
 import Teaser from '@components/teaser.astro';
+import Testimonial from '@components/testimonial.astro'
+
+
+const testimonial = [
+	{
+		quote: `So thankful for our newest family member, Carson, a 4 month old pup from a wonderful breeder in Fort Collins Colorado, Crystal Glen Golden Retrievers. Sue and Lucy, you put your heart, soul, and years of expertise into all of your pups and it shows. He's beautiful, smart, athletic, and has such a sweet temperament. We're so glad we took the extra 2 months of training with you, he is off to a fantastic start! Many thanks, we love him so much. "Nothin' But Blue Skies".`,
+		attribution: `The Carsons`,
+		src: '/images/CarsonKline2.jpg',
+	},
+];
 
 ---
 
@@ -29,6 +39,10 @@ import Teaser from '@components/teaser.astro';
 		<Image aspectRatio="aspect-square" src="/images/puppies.jpeg" />
 	</div>
 
+	<div class="my-10">
+		<h2 class="h2 text-center"> The Joys of a Crystal Glen pup </h2>
+		<Testimonial {...testimonial[0]} />
+	</div>
 
 		<div class="flex justify-between items-center gap-4">
 		  <h2 class="h2 text-center"> Our Dogs </h2>

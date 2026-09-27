@@ -1,6 +1,7 @@
 ---
 import Page from '../../components/page.astro';
 import TextMedia from '../../components/textmedia.astro';
+import Image from '@components/Image.astro';
 
 ---
 
@@ -19,11 +20,19 @@ import TextMedia from '../../components/textmedia.astro';
 		</p>
 		<a href="/puppies/new-owners" class="btn-primary mt-4"> New Owner Requirements </a>
 	</TextMedia>
+
 	<h2 class="h2 mt-10"> Helpful Links </h2>
 	<ul class="flex flex-col gap-4">
 		<li> <a href="/puppies/litters">Upcoming Litters </a> for our future breedings.</li>
 		<li> <a href="/puppies/past-litters"> Past Litters </a> to see some of our wonderful puppies.</li>
 		<li> <a href="/puppies/training"> Puppy Training Program </a> Need help? We have you covered with our training program.</li>
 	</ul>
+
+	<div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+		<Image aspectRatio="aspect-4/5" src="/images/Zeus Hinson2web.jpg" />
+		<Image aspectRatio="aspect-4/5" src="/images/Rip Burbridgeweb.jpg" />
+		<Image aspectRatio="aspect-4/5" src="/images/Finnweb.jpg" />
+		<Image aspectRatio="aspect-4/5" src="/images/KaboMcleanweb.jpg" />
+	</div>
 
 </Page>

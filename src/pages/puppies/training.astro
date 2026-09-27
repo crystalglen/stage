@@ -1,16 +1,13 @@
 ---
 import Page from '@components/page.astro';
 import Testimonial from '@components/testimonial.astro'
+import Image from '@components/image.astro'
+
 const testimonials = [
-	{
-		quote: `So thankful for our newest family member, Carson, a 4 month old pup from a wonderful breeder in Fort Collins Colorado, Crystal Glen Golden Retrievers. Sue and Lucy, you put your heart, soul, and years of expertise into all of your pups and it shows. He's beautiful, smart, athletic, and has such a sweet temperament. We're so glad we took the extra 2 months of training with you, he is off to a fantastic start! Many thanks, we love him so much. "Nothin' But Blue Skies".`,
-		attribution: `The Carsons`,
-		src: 'https://placehold.co/300x200',
-	},
 	{
 		quote: `Just wanted to share with you all that Blu is amazing! Sweet, kind and so loveable. Has not been jumping very much (only with Cy who likes to play with her and wrestle with her) Thanks so much. We are so happy to have her with us.`,
 		attribution: `Katie and the Turuel family`,
-		src: 'https://placehold.co/300x200',
+		src: '/images/Blu Turuel small.jpg',
 	},
 	{
 		quote: `Hi Sue!
@@ -19,7 +16,7 @@ Hope you had a great Thanksgiving. Since I'm not on Facebook thought I’d send 
 
 She is so very easy to work with but we thought a refresher while she's with you might be awesome as well.`,
 		attribution: `Kelly Boyd`,
-		src: 'https://placehold.co/300x200',
+		src: '/images/Birdie 1 small.jpg',
 	},
 	{
 		quote: `
@@ -31,17 +28,17 @@ Kelly and I are so thankful for our Christmas gift, Sammy!
 
 As you can see, he is growing like a weed, but he is still as handsome as the day I picked him up, and very well behaved.  Remarkably, to me, Sammy has instantly adapted to me, Kelly and his Florida home.  We all could not be happier how things worked out.`,
 		attribution: `Kelly Palmer`,
-		src: 'https://placehold.co/300x200',
+		src: '/images/Sammie First day at home1jpg.jpg',
 	},
 	{
 		quote: `Sadie has been a true blessing to our family!! Thank you Sue for a wonderful gift to us!`,
 		attribution: `Rion Groves`,
-		src: 'https://placehold.co/300x200',
+		src: '/images/Sadie and grandkids2.jpg',
 	},
 	{
 		quote: `Alfie is an incredible dog. He made friends with an old golden rescue dog that we took care of while a friend was traveling. He loves his toys. We now have a place in the mountains which he loves. He and our daughter’s dog who is also a rescue dog get along great.`,
 		attribution: `Pam Tarquin`,
-		src: 'https://placehold.co/300x200',
+		src: '/images/Alfie 2.jpg',
 	},
 ];
 
@@ -49,17 +46,28 @@ As you can see, he is growing like a weed, but he is still as handsome as the da
 
 <Page title="Training Program">
 	<h1 class="h1 text-center"> Our Training Program </h1>
-	<p>
-		We limit the number of pups we have in for training at any one time. Allowing us to give each pup the time and attention it deserves. Your pup's daily routine includes walks, playtime with other Goldens/dogs, interactions with people as well as actual training.
-	</p><p>
-Your pup learns basic commands such as sit, down, stay, come, wait at a door. We teach the pup proper crate manners and begin house breaking.
-	</p><p>
-Your pup will be introduced to the the big wide world. By attending pup training classes and daycare off the property. Included are car rides to visit downtown Fort Collins where we head into stores such as Home Depot, Ace Hardware etc.
-	</p><p>
-We believe all these interactions are the formula to making a Canine Good Citizen.
-	</p><p>
-Basic program is 1-2 months. We do offer a "crash" course of 2 weeks.
-	</p>
+	<div class="flex gap-6 flex-col md:flex-row">
+		<div class="flex flex-col gap-4">
+			<Image src="/images/AlfieA.jpg" />
+			<Image src="/images/Alfie Down stay 2.jpg" />
+			<Image src="/images/Sammie down.jpg" />
+		</div>
+		<div>
+			<p>
+				We limit the number of pups we have in for training at any one time. Allowing us to give each pup the time and attention it deserves. Your pup's daily routine includes walks, playtime with other Goldens/dogs, interactions with people as well as actual training.
+			</p><p>
+		Your pup learns basic commands such as sit, down, stay, come, wait at a door. We teach the pup proper crate manners and begin house breaking.
+			</p><p>
+		Your pup will be introduced to the the big wide world. By attending pup training classes and daycare off the property. Included are car rides to visit downtown Fort Collins where we head into stores such as Home Depot, Ace Hardware etc.
+			</p><p>
+		We believe all these interactions are the formula to making a Canine Good Citizen.
+			</p><p>
+		Basic program is 1-2 months. We do offer a "crash" course of 2 weeks.
+			</p>
+		</div>
+	</div>
+
+	<!-- Testimonials -->
 	<h2 class="h2 my-10"> Testimonials from recent graduates! </h2>
 	<div class="flex flex-col gap-6">
 		{ testimonials.map((props) => (
